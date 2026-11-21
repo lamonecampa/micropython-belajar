@@ -1,0 +1,34 @@
+<!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Dengan Wi-Fi, mikrokontroler dapat menjadi klien jaringan atau menyediakan layanan HTTP sederhana. Kita mulai dengan koneksi sebagai station lalu membuat server minimal."><title>Wi-Fi dan web server sederhana | MicroPython Belajar</title><link rel="stylesheet" href="../assets/css/article.css"></head><body><header class="topbar"><a class="brand" href="../index.html"><span class="brand-mark">µ</span><span>micro<span class="brand-light">python</span><small>BELAJAR • OPEN HARDWARE</small></span></a><nav><a href="../index.html#kurikulum">Kurikulum</a><a href="../index.html#jalur">Jalur belajar</a><a href="../tentang.html">Tentang</a><a class="nav-cta" href="../index.html">Beranda ↗</a></nav><button class="menu-toggle" aria-label="Buka menu">☰</button></header><main class="wrap article-shell"><aside class="article-side"><h4>JALUR BELAJAR</h4><a href="01-mengenal-micropython.html">01 · Mengenal MicroPython</a><a href="02-persiapan-alat.html">02 · Persiapan alat</a><a href="03-instalasi-firmware.html">03 · Instalasi firmware</a><a href="04-memilih-board.html">04 · Memilih board</a><a href="05-thonny-ide.html">05 · Thonny IDE</a><a href="06-pycharm-ide.html">06 · PyCharm IDE</a><hr style="border:0;border-top:1px solid var(--line);margin:13px 0"><a href="../index.html#kurikulum">← Semua level</a></aside><article class="article"><div class="breadcrumb"><a href="../index.html">Beranda</a> / Artikel / 16</div><div class="eyebrow">LEVEL MENENGAH · ARTIKEL 16</div><h1>Wi-Fi dan web server sederhana</h1><p class="article-lead">Dengan Wi-Fi, mikrokontroler dapat menjadi klien jaringan atau menyediakan layanan HTTP sederhana. Kita mulai dengan koneksi sebagai station lalu membuat server minimal.</p><div class="article-meta">MICROPYTHON BELAJAR · 6–10 MENIT BACA</div><h2>Menghubungkan ke access point</h2><pre><code>import network
+import time
+
+SSID = "NAMA_WIFI"
+PASSWORD = "KATA_SANDI"
+wlan = network.WLAN(network.STA_IF)
+wlan.active(True)
+wlan.connect(SSID, PASSWORD)
+
+for _ in range(20):
+    if wlan.isconnected():
+        break
+    time.sleep(1)
+
+if wlan.isconnected():
+    print("IP:", wlan.ifconfig()[0])
+else:
+    print("Koneksi gagal")</code></pre><p>Ganti kredensial dan jangan unggah kata sandi ke repository publik. Simpan konfigurasi di file yang tidak dilacak Git atau mekanisme provisioning aman.</p><h2>Server HTTP dasar</h2><pre><code>import socket
+
+addr = socket.getaddrinfo("0.0.0.0", 80)[0][-1]
+s = socket.socket()
+s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+s.bind(addr)
+s.listen(1)
+print("Server siap")
+
+while True:
+    conn, client = s.accept()
+    request = conn.recv(1024)
+    response = (b"HTTP/1.1 200 OK\r\n"
+      b"Content-Type: text/plain\r\nConnection: close\r\n\r\n"
+      b"MicroPython aktif")
+    conn.send(response)
+    conn.close()</code></pre><h2>Akses dari browser</h2><p>Buka alamat IP yang ditampilkan board pada browser perangkat lain dalam jaringan yang sama. Jika router mengaktifkan client isolation atau firewall, koneksi dapat diblokir.</p><h2>Batas keamanan</h2><p>Server contoh ini belum memiliki autentikasi, validasi request lengkap, TLS, atau pembatasan akses. Gunakan hanya untuk eksperimen jaringan lokal, bukan membuka kontrol aktuator ke internet.</p><h2>Latihan</h2><p>Ubah respons menjadi halaman HTML sederhana dan tampilkan status board. Tambahkan penanganan timeout dan pastikan socket selalu ditutup.</p><div class="source-box"><h4>Referensi untuk pendalaman</h4><a href="https://docs.micropython.org/en/latest/esp32/tutorial/network_tcp.html" target="_blank" rel="noopener">Sumber utama ↗</a><a href="https://docs.micropython.org/en/latest/library/network.html" target="_blank" rel="noopener">Dokumentasi pendukung ↗</a></div><div class="article-nav"><a href="../index.html#kurikulum">← Peta kurikulum</a><a href="17-json-data.html">Artikel berikutnya →</a></div></article></main><footer class="footer wrap"><div class="footer-bottom"><span>© 2026 MicroPython Belajar</span><a href="https://github.com/lamonecampa/micropython-belajar">GitHub ↗</a></div></footer><script src="../assets/js/main.js"></script></body></html>
