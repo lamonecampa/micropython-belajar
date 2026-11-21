@@ -25,6 +25,8 @@ Buka http://localhost:8000.
 - `index.html`: beranda dan peta kurikulum.
 - `artikel/`: 30 artikel.
 - `assets/css/`: style utama dan artikel.
+- `assets/images/diagrams/`: diagram edukatif SVG orisinal yang digunakan di artikel.
+- `credits-gambar.md`: daftar aset visual, atribusi, dan referensi.
 - `assets/js/`: interaksi UI.
 - `tentang.html`: prinsip dan catatan kompatibilitas.
 
