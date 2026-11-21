@@ -1,0 +1,26 @@
+<!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Kamu tidak perlu menguasai seluruh Python desktop untuk memulai. Fokus pada konstruksi bahasa yang paling sering dipakai saat membaca sensor, mengolah nilai, dan mengendalikan perangkat."><title>Dasar Python untuk MicroPython | MicroPython Belajar</title><link rel="stylesheet" href="../assets/css/article.css"></head><body><header class="topbar"><a class="brand" href="../index.html"><span class="brand-mark">µ</span><span>micro<span class="brand-light">python</span><small>BELAJAR • OPEN HARDWARE</small></span></a><nav><a href="../index.html#kurikulum">Kurikulum</a><a href="../index.html#jalur">Jalur belajar</a><a href="../tentang.html">Tentang</a><a class="nav-cta" href="../index.html">Beranda ↗</a></nav><button class="menu-toggle" aria-label="Buka menu">☰</button></header><main class="wrap article-shell"><aside class="article-side"><h4>JALUR BELAJAR</h4><a href="01-mengenal-micropython.html">01 · Mengenal MicroPython</a><a href="02-persiapan-alat.html">02 · Persiapan alat</a><a href="03-instalasi-firmware.html">03 · Instalasi firmware</a><a href="04-memilih-board.html">04 · Memilih board</a><a href="05-thonny-ide.html">05 · Thonny IDE</a><a href="06-pycharm-ide.html">06 · PyCharm IDE</a><hr style="border:0;border-top:1px solid var(--line);margin:13px 0"><a href="../index.html#kurikulum">← Semua level</a></aside><article class="article"><div class="breadcrumb"><a href="../index.html">Beranda</a> / Artikel / 07</div><div class="eyebrow">LEVEL DASAR · ARTIKEL 07</div><h1>Dasar Python untuk MicroPython</h1><p class="article-lead">Kamu tidak perlu menguasai seluruh Python desktop untuk memulai. Fokus pada konstruksi bahasa yang paling sering dipakai saat membaca sensor, mengolah nilai, dan mengendalikan perangkat.</p><div class="article-meta">MICROPYTHON BELAJAR · 6–10 MENIT BACA</div><h2>Variabel dan tipe data</h2><pre><code>nama = "sensor suhu"
+jumlah = 3
+suhu = 28.5
+aktif = True
+print(nama, jumlah, suhu, aktif)</code></pre><p>Python menentukan tipe berdasarkan nilai yang diberikan. MicroPython mendukung tipe dasar seperti integer, float, string, boolean, list, tuple, dan dictionary. Namun, penggunaan memori tetap harus diperhatikan.</p><h2>Operator dan percabangan</h2><pre><code>tegangan = 3.1
+if tegangan > 3.0:
+    status = "normal"
+else:
+    status = "periksa"
+print(status)</code></pre><h2>Perulangan</h2><pre><code>for nomor in range(3):
+    print("Percobaan", nomor)
+
+hitung = 0
+while hitung < 3:
+    print(hitung)
+    hitung += 1</code></pre><h2>List, dictionary, dan fungsi</h2><pre><code>sensor = {"suhu": 28.5, "kelembapan": 70}
+print(sensor["suhu"])
+nilai = [24, 25, 26, 27]
+print(sum(nilai) / len(nilai))
+
+def celsius_ke_fahrenheit(c):
+    return (c * 9 / 5) + 32</code></pre><h2>Penanganan kesalahan</h2><pre><code>try:
+    angka = int("123")
+    print(angka)
+except ValueError:
+    print("Input bukan bilangan bulat")</code></pre><h2>Latihan</h2><ol><li>Buat list berisi lima pembacaan sensor dan hitung rata-ratanya.</li><li>Buat fungsi untuk memberi status “dingin”, “normal”, atau “panas”.</li><li>Gunakan dictionary untuk menyimpan nama perangkat dan statusnya.</li></ol><div class="source-box"><h4>Referensi untuk pendalaman</h4><a href="https://mischianti.org/category/micropython-language/" target="_blank" rel="noopener">Sumber utama ↗</a><a href="https://docs.micropython.org/en/latest/genrst/index.html" target="_blank" rel="noopener">Dokumentasi pendukung ↗</a></div><div class="article-nav"><a href="../index.html#kurikulum">← Peta kurikulum</a><a href="08-repl-filesystem.html">Artikel berikutnya →</a></div></article></main><footer class="footer wrap"><div class="footer-bottom"><span>© 2026 MicroPython Belajar</span><a href="https://github.com/lamonecampa/micropython-belajar">GitHub ↗</a></div></footer><script src="../assets/js/main.js"></script></body></html>
