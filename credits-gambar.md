@@ -11,7 +11,8 @@ Diagram yang tampil di 30 artikel dibuat khusus untuk situs **MicroPython Belaja
 | Berkas | Pokok bahasan | Digunakan untuk |
 |---|---|---|
 | `konsep-micropython.svg` | Alur kode, firmware, periferal, dan aksi perangkat | Artikel 01, 07 |
-| `toolchain.svg` | IDE, koneksi serial, firmware, REPL | Artikel 02, 05, 06, 12, 18 |
+| `toolchain.svg` | IDE, koneksi serial, firmware, REPL | Artikel 02, 12, 18 |
+| `ide-thonny.svg` | Alur umum editor, interpreter, koneksi perangkat, dan eksekusi | Artikel 05, 06 |
 | `flash-firmware.svg` | Tahapan flashing firmware | Artikel 03 |
 | `board-ecosystem.svg` | Keluarga board dan pemeriksaan dukungan firmware | Artikel 04 |
 | `gpio-wiring.svg` | Konsep rangkaian GPIO, resistor, LED, dan ground | Artikel 09, 11 |
